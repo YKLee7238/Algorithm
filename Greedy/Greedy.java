@@ -200,7 +200,7 @@ public class Greedy {
         });
         return result.get((int) ((k - summary) % length)).getIndex();
     }
-    
+
     static class Food implements Comparable<Food> {
 
         private int time;
@@ -226,3 +226,4 @@ public class Greedy {
         }
     }
 }
+ 
