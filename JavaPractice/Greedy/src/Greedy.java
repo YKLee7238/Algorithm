@@ -11,7 +11,7 @@ public class Greedy {
         // 1이 될때까지
         //UntilOne2(27, 8);
 
-        StrFlip("0001100");
+        StrFlip("010100110");
 
     }
 
