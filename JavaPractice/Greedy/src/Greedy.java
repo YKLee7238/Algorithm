@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-import jdk.tools.jlink.internal.SymLinkResourcePoolEntry;
 
 public class Greedy {
     public static void main(String[] args) throws Exception {
