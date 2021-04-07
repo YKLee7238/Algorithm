@@ -17,8 +17,7 @@ public class Implement {
         // 북 동 남 서
         int[] dx = new int[]{-1, 0, 1, 0};
         int[] dy = new int[]{0, 1, 0, -1}; 
-        // 북 서 남 동
-        int[] dir = new int[] {0, 3, 2, 1};
+        
         
         int[][] visit = new int[n][m];
         int[][] map = new int[n][m];
