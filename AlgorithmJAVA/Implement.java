@@ -1,6 +1,5 @@
 import java.util.*;
 
-import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
 public class Implement {
     
@@ -13,58 +12,81 @@ public class Implement {
         // n, m 은 맵
         // x,y 는 현위치, c는 방향
         
-        int[] curLoc = new int[]{playerX, playerY};
-
-        // 북 서 남 동
-        int[] dir = new int[] {0, 3, 2, 1};
-        int c = dir[playerC];
+        int[] curLoc = new int[]{playerX, playerY, playerC};
 
         // 북 동 남 서
         int[] dx = new int[]{-1, 0, 1, 0};
-        int[] dy = new int[]{0, 1, 0, -1};
-        Scanner sc = new Scanner(System.in);
-        int[][] visit = new int[n][m];
+        int[] dy = new int[]{0, 1, 0, -1}; 
+        // 북 서 남 동
+        int[] dir = new int[] {0, 3, 2, 1};
         
+        int[][] visit = new int[n][m];
         int[][] map = new int[n][m];
 
+        int turnCnt =0;
         visit[playerX][playerY] = 1;
+
+        System.out.println(String.format("%d x %d 형태의 Map 입력하세요", n,m));
+        Scanner sc = new Scanner(System.in);
         // map 초기화
         for(int i=0; i<n; i++)
             for(int j=0; j<m; j++)
             {
                 map[i][j] = sc.nextInt();
             }
-
-
         
+        int totalCnt =1;
+        sc.close();
         while(true)
         {
-            List<Boolean> no = new ArrayList<>(4);
+            int nextDir = TurnLeft(curLoc[2]);
+            int nextX = curLoc[0]+dx[nextDir];
+            int nextY = curLoc[1]+dy[nextDir];
+            int mapNextXY =  map[nextX][nextY];
             
-            for(int i =0; i < dir.length; i++)
+            // 바다인경우 or 가봤던 칸.
+            if(mapNextXY == 1 || visit[nextX][nextY] == 1)
             {
-                if(map[curLoc[0]+dx[dir[i]]][curLoc[1]+dy[dir[i]]] == 1)
-                {
-                    no.add(true);
-                    continue;
-                }
-                if(visit[curLoc[0]+dx[dir[i]]][curLoc[1]+dy[dir[i]]] != 1)
-                {
-                    visit[curLoc[0]+dx[dir[i]]][curLoc[1]+dy[dir[i]]] = 1;
+                turnCnt  ++;
+                curLoc[2] = nextDir;
+            }
+            else{ // 방문할 수 있는 경우.
+                visit[nextX][nextY] =1; //방문 기록
 
-                    curLoc[0] =curLoc[0]+dx[dir[i]];
-                    curLoc[1] =curLoc[1]+dy[dir[i]];
-                    break;
-                }else{
-                    no.add(true);
-                    continue;
-                }
+                //위치 변경
+                curLoc[0] = nextX;
+                curLoc[1] = nextY;
+                curLoc[2] = nextDir;
+
+                turnCnt = 0;
+                totalCnt++;
+                continue;
             }
 
-            no.removeIf(xz-> xz == true);
+            if(turnCnt ==4)
+            {
+                int x = curLoc[0]-dx[nextDir];
+                int y = curLoc[1]-dy[nextDir];
 
-            if(no.size() ==0)
-                break;
+                if(map[x][y] ==1)
+                    break;
+                else{
+                    curLoc[0] = x;
+                    curLoc[1] = y;
+                }
+
+                turnCnt=0;
+            }
         }
+        System.out.println("정답은 : "+ totalCnt);
+
+    }
+    private static int TurnLeft(int cur)
+    {
+        // 북 이면 서
+        if(cur == 0 )
+            return 3;
+        else
+            return cur-1;
     }
 }
