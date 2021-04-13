@@ -5,7 +5,8 @@ public class Implement {
     
     public static void main(String[] args) {
         
-        DevGame(4,4, 1,1, 0);
+        //DevGame(4,4, 1,1, 0);
+        System.out.println(StringCompression("aabbaccc"));
     }
 
     public static void DevGame(int n, int m, int playerX, int playerY, int playerC){
@@ -87,5 +88,33 @@ public class Implement {
             return 3;
         else
             return cur-1;
+    }
+
+    public static int StringCompression(String s) {
+        int answer = 9999;
+        int result =0;
+        int cnt =0;
+        for (int j = 1; j < s.length() /2 +1; j ++)
+        {
+            String pre = s.substring(j,1);
+
+            for (int i=1; i <s.length(); i++)
+            {
+                String cur = s.substring(j, i);
+                if(pre.equals(cur))
+                {
+                    cnt ++;
+                }
+                else{
+                    result += cnt + pre.length();
+                    cnt=0;
+                }       
+
+                pre = cur;
+            }
+            result =0;
+            answer = Integer.min(answer, result);
+        }
+        return answer;
     }
 }
