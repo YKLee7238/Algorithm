@@ -6,7 +6,7 @@ public class Implement {
     public static void main(String[] args) {
         
         //DevGame(4,4, 1,1, 0);
-        System.out.println(StringCompression("aabbaccc"));
+        System.out.println(StringCompression("abcabcdede"));
     }
 
     public static void DevGame(int n, int m, int playerX, int playerY, int playerC){
@@ -91,29 +91,52 @@ public class Implement {
     }
 
     public static int StringCompression(String s) {
-        int answer = 9999;
-        int result =0;
-        int cnt =0;
-        for (int j = 1; j < s.length() /2 +1; j ++)
+        int answer = s.length();  
+           
+        for (int unit = 1; unit <= s.length() / 2; unit ++)
         {
-            String pre = s.substring(j,1);
+            if(unit ==3)
+                System.out.println( );
+            // unit : 쪼개는 단위.
+            StringBuilder builder = new StringBuilder();
+            String pre =s.substring(0, unit);
 
-            for (int i=1; i <s.length(); i++)
+            int cnt = 1;   
+            for (int i=unit; i <=s.length(); i+= unit)
             {
-                String cur = s.substring(j, i);
-                if(pre.equals(cur))
-                {
-                    cnt ++;
-                }
-                else{
-                    result += cnt + pre.length();
-                    cnt=0;
-                }       
+                // 글자수가 마지막에 넘어갈때 .
+                String cur = s.substring(i, i+unit < s.length() ? i+unit : s.length());
 
-                pre = cur;
+                // 같은경우 Count  Up
+                if(pre.equals(cur)) {
+                    cnt ++;
+				}
+                else
+                {
+                    // 같지 않은데 중복 되지 않은경우 글자만 추가
+                    if(cnt ==1)
+                        builder.append(pre);
+                    else // 같지 않은데 중복된 경우 숫자 + 글자 추가 ex) 2b
+                    {
+                        builder.append(cnt);
+                        builder.append(pre);
+                    }
+                    cnt =1;
+                    pre = cur;
+                }
             }
-            result =0;
-            answer = Integer.min(answer, result);
+
+            // Unit으로 짜르고 마지막 추가.
+            if(cnt == 1)
+                builder.append(pre);
+            else {
+                builder.append(cnt);
+                builder.append(pre);
+            }
+
+            if(builder.length() ==7)
+                System.out.println();
+            answer = Integer.min(answer, builder.length());
         }
         return answer;
     }
