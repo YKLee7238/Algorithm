@@ -40,15 +40,19 @@ public class DFSBFS {
             Node node = que.poll();
             x = node.getX();
             y = node.getY();
-            // 현재 위치에서 4가지 방향으로의 위치 확인
+            if(x == map.length && y == map[0].length) // 맵 마지막 이면 끝
+                break;
+            // 현재 위치에서 상 하 좌 우 탐색
             for (int i = 0; i < 4; i++) {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
-                // 미로 찾기 공간을 벗어난 경우 무시
-                if (nx < 0 || nx >= map.length || ny < 0 || ny >= map[0].length) continue;
-                // 벽인 경우 무시
-                if (map[nx][ny] == 0) continue;
-                // 해당 노드를 처음 방문하는 경우에만 최단 거리 기록
+                // Map 공간을 벗어나면 Pass
+                if (nx < 0 || nx >= map.length || ny < 0 || ny >= map[0].length) 
+                    continue;
+                
+                if (map[nx][ny] == 0)// 해당 노드를 처음 방문하는 경우에만 최단 거리 기록 
+                    continue;
+                
                 if (map[nx][ny] == 1) {
                     map[nx][ny] = map[x][y] + 1;
                     que.offer(new Node(nx, ny));
