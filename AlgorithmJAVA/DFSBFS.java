@@ -40,8 +40,7 @@ public class DFSBFS {
             Node node = que.poll();
             x = node.getX();
             y = node.getY();
-            if(x == map.length && y == map[0].length) // 맵 마지막 이면 끝
-                break;
+            
             // 현재 위치에서 상 하 좌 우 탐색
             for (int i = 0; i < 4; i++) {
                 int nx = x + dx[i];
