@@ -20,8 +20,7 @@ public class SearchCity {
 
         Arrays.fill(dist, 0);
         Arrays.fill(visit, false);
-        System.out.println(String.format("도시 개숫 : %d, 도로갯수 : %d, 최단거리 : %d, 시작도시 : %d", cityCnt, roadCnt, shortDistance, startCity));
-
+        System.out.println(String.format("도시 갯수: %d, 도로갯수 : %d, 최단거리 : %d, 시작도시 : %d", cityCnt, roadCnt, shortDistance, startCity));
 
         // A도시에서 B도시 갈 수 있는 곳.
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();

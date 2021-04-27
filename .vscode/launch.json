@@ -6,10 +6,39 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Sort",
+            "request": "launch",
+            "mainClass": "Sort",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
+            "name": "Launch MovePerson",
+            "request": "launch",
+            "mainClass": "MovePerson",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
+            "name": "Launch SearchCity",
+            "request": "launch",
+            "mainClass": "SearchCity",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "jdkpath" : "C:\\Java\\jdk-17\bin"
+            "console": "externalTerminal",
+            "jdkPath": "C:\\Java\\jdk-17\\bin"
         }
     ]
 }
