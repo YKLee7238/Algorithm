@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch GraphQ43",
+            "request": "launch",
+            "mainClass": "GraphQ43",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
+            "name": "Launch Ch17_Q38",
+            "request": "launch",
+            "mainClass": "Ch17_Q38",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
+            "name": "Launch DP",
+            "request": "launch",
+            "mainClass": "DP",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
+            "name": "Launch SearchLyrics",
+            "request": "launch",
+            "mainClass": "SearchLyrics",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
             "name": "Launch Sort",
             "request": "launch",
             "mainClass": "Sort",
