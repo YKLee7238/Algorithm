@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BabyShark",
+            "request": "launch",
+            "mainClass": "BabyShark",
+            "projectName": "Git_77515299"
+        },
+        {
+            "type": "java",
             "name": "Launch GraphQ43",
             "request": "launch",
             "mainClass": "GraphQ43",
@@ -66,7 +73,7 @@
             "request": "launch",
             "mainClass": "${file}",
             "console": "externalTerminal",
-            "jdkPath": "C:\\Java\\jdk-17\\bin"
+            "jdkpath" : "C:\\Java\\jdk-17\\bin"
         }
     ]
 }
